@@ -35,14 +35,14 @@ type DemoFn =
 const demos = {
 	basic: {
 		"getting-started": DemoHelloWorld,
-		"three-fog": DemoFog,
+		"construction": DemoFog,
 		"background-removal": DemoBackgroundRemoval,
 		"scene-lighting": DemoLighting,
 		"custom-shaders": DemoCustomShaders,
 		"transmission": DemoTransmission,
 		"vr": DemoVR,
 		"wildness": DemoWildness,
-		"Metropolis": DemoMetropolis,
+		"metropolis": DemoMetropolis,
 	} as Record<string, DemoFn>,
 	react: {
 		"react-three-fiber": DemoReactThreeFiber
@@ -64,17 +64,9 @@ function DemoScene(props: {
 	let [showUI, setShowUI] = useState(true);
 	let controlsRef = useRef<OrbitControlsStdLib | null>(null);
 	const [audio] = useState(new Audio('../assets/bgm.wav'));
+	const [audioW] = useState(new Audio('../assets/wild.mp3'));
+	const [audioC] = useState(new Audio('../assets/toxic.mp3'));
 
-
-  useEffect(() => {
-    // 在组件挂载后输出 scene 变量的内容
-    console.log('Initial Scene:', scene);
-
-    // 在组件卸载前输出 scene 变量的内容
-    return () => {
-      console.log('Unmounting Scene:', scene);
-    };
-  }, [scene]); 
   
 	//init
 	useEffect(() => {
@@ -144,18 +136,28 @@ function DemoScene(props: {
 	}, []);
 
 	useEffect(() => {
-        audio.load();
+        audio.load(); audioW.load(); audioC.load();
 				audio.loop = true;
-				if(audio){
-					audio.play().catch(error => {
-            console.error('Error playing audio:', error);
-        });
-				}
-			const audioContext = new (window.AudioContext)();
-			const analyser = audioContext.createAnalyser();
-			const source = audioContext.createMediaElementSource(audio);
+				audioC.loop = true;
+				audioW.loop = true;
+				const url = new URL(window.location.href);
 
-			source.connect(analyser);
+				const audioContext = new (window.AudioContext)();
+			   const analyser = audioContext.createAnalyser();
+			if (url.hash === '#construction') {
+				audioC.play();
+				const source = audioContext.createMediaElementSource(audioC);
+				source.connect(analyser);
+			} else if (url.hash === '#wildness') {
+				audioW.play();
+				const source = audioContext.createMediaElementSource(audioW);
+				source.connect(analyser);
+			} else if (url.hash === '#metropolis') {
+				audio.play();
+				const source = audioContext.createMediaElementSource(audio);
+				source.connect(analyser);
+			}
+
 			analyser.connect(audioContext.destination);
 			analyser.fftSize = 256;
 
@@ -165,11 +167,9 @@ function DemoScene(props: {
 					analyser.getByteFrequencyData(dataArray);
 
 					const volume = dataArray.reduce((sum, value) => sum + value, 0) / dataArray.length / 255;
-					// console.log(volume);
 					if(scene.fog){
 					scene.fog.density = 0.2 - volume*1.4;						
 					}
-					console.log(scene.fog)
 					renderer.render(scene, camera);
 					requestAnimationFrame(animate);
 			};
@@ -177,6 +177,8 @@ function DemoScene(props: {
 			animate();
 
 			return () => {
+					audio.pause();
+					audioW.pause();
 					audio.pause();
 					audioContext.close();
 			};
