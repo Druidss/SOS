@@ -5,7 +5,7 @@ import { VRButton } from "three/examples/jsm/webxr/VRButton.js";
 
 
 
-export function DemoFog(props: DemoProps) {
+export function DemoWildness(props: DemoProps) {
 
     const { renderer, camera, scene, gui } = props;
     renderer.xr.enabled = true;
@@ -14,11 +14,11 @@ export function DemoFog(props: DemoProps) {
 	let canvas = renderer.getContext().canvas as HTMLCanvasElement;
 	canvas.parentElement!.append(vrButton);
 
-    scene.fog = new FogExp2(new Color(0x5c5c5c).convertLinearToSRGB(), 0.1);
+    scene.fog = new FogExp2(new Color(0xa8a8a8).convertLinearToSRGB(), 0.1);
     scene.background = scene.fog.color;
 
     let splats = new LumaSplatsThree({
-        source: 'https://lumalabs.ai/capture/bb063183-310e-4dc9-abbe-ce521f38f228',
+        source: 'https://lumalabs.ai/capture/b5faf515-7932-4000-ab23-959fc43f0d94',
         loadingAnimationEnabled: false,
     });
     scene.add(splats);

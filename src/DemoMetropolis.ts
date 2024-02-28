@@ -5,7 +5,7 @@ import { VRButton } from "three/examples/jsm/webxr/VRButton.js";
 
 
 
-export function DemoFog(props: DemoProps) {
+export function DemoMetropolis(props: DemoProps) {
 
     const { renderer, camera, scene, gui } = props;
     renderer.xr.enabled = true;
@@ -18,7 +18,7 @@ export function DemoFog(props: DemoProps) {
     scene.background = scene.fog.color;
 
     let splats = new LumaSplatsThree({
-        source: 'https://lumalabs.ai/capture/bb063183-310e-4dc9-abbe-ce521f38f228',
+        source: 'https://lumalabs.ai/capture/d73e294a-b07a-4e97-b84b-8da3bb34ab5c',
         loadingAnimationEnabled: false,
     });
     scene.add(splats);
