@@ -10,20 +10,30 @@ random, sustainability, Smog (PM2.5)
 Each time the viewer clicks on the portal, the viewer is randomly introduced to a different level of air pollution and heard a soundscape that matches.
 
 
+
+
+
 **view my code on github! [![github-logo](./assets/images/github-mark-16.svg) GitHub repo](https://github.com/Druidss/SOS)** 
+
+
+
 
 
 
 
 ### Contents
 
-- [wilderness](#wilderness)
-- [polluted metropolis](#polluted-metropolis)
-- [Construction](#getting-started)
+- [wilderness](#wildness)
+- [polluted metropolis](#metropolis)
+- [construction](#construction)
+
+
+
+
 
 
 ## Getting Started
-[![hello-world-demo](./assets/images/hello-world-preview.jpg)](#getting-started)
+[![hello-world-demo](./assets/images/portal.png)](#getting-started)
 
 `source` can be either of:
 - URL to a capture on [lumalabs.ai](https://lumalabs.ai)
@@ -31,26 +41,18 @@ Each time the viewer clicks on the portal, the viewer is randomly introduced to 
 
 
 
-**[DemoHelloWorld.ts](./src/DemoHelloWorld.ts)**
-```ts
-let splats = new LumaSplatsThree({
-	source: 'https://lumalabs.ai/capture/ca9ea966-ca24-4ec1-ab0f-af665cb546ff',
-});
-
-scene.add(splats);
-
-scene.add(createText());
-```
-
-
 
 
 ## Metropolis
-[![background-removal-demo](./assets/images/background-removal-preview.jpg)](#background-removal)
+[![background-removal-demo](./assets/images/metro.png)](#metropolis)
 
- polluted metropolis with the prompt on Musicgen `Muffled Lament vibe`, `sad`, `Gloomy Desolation`, `orchestral Cello`,
+ polluted metropolis with the prompt on Musicgen 
+ 
+ ```t
+ `Muffled Lament vibe`, `sad`, `Gloomy Desolation`, `orchestral Cello`,
 `Bassoon, Organ`, `Choir`, `Muted melody`,
 `Endlessness` 
+```
 
 ```ts
 let splats = new LumaSplatsThree({
@@ -68,9 +70,14 @@ scene.add(createText());
 
 
 ## construction
-[![three.js-fog-demo](./assets/images/three.js-fog-preview.jpg)](#three-fog)
+[![three.js-fog-demo](./assets/images/construction.png)](#construction)
 
-Construction Site  with the prompt on Musicgen `Toxic Elegy vibe`, `melancholic`, `Asphalt Lamentation`, `Synth Clouds`, `Bassoon Drone`, `Percussive Echoes`, `Choir of Industry`, `Muted Sorrow`.
+Construction Site  with the prompt on Musicgen 
+```t
+`Toxic Elegy vibe`, `melancholic`, `Asphalt Lamentation`,
+ `Synth Clouds`, `Bassoon Drone`, `Percussive Echoes`, `Choir of Industry`, `Muted Sorrow`.
+```
+
 
 ```ts
 let splats = new LumaSplatsThree({
@@ -89,8 +96,17 @@ scene.add(createText());
 
 
 ## wildness
-[![three.js-fog-demo](./assets/images/three.js-fog-preview.jpg)](#three-fog)
-wildness with the prompt on Musicgen `Sylvan Serenade vibe`, `peaceful`, `Sunrise Sonata`, `Guitar`, `Bassoon`, `Harmonic Birdsong`, `Woodland Choir`, `Gentle Resonance`, `Infinite Harmony`.
+[![three.js-fog-demo](./assets/images/three.js-fog-preview.jpg)](#wildness)
+
+
+wildness with the prompt on Musicgen
+```t
+ `Sylvan Serenade vibe`, `peaceful`, `Sunrise Sonata`, `Guitar`,
+  `Bassoon`, `Harmonic Birdsong`, `Woodland Choir`, 
+	`Gentle Resonance`, `Infinite Harmony`.
+ ```
+
+
 ```ts
 let splats = new LumaSplatsThree({
  // HOLLYWOOD @DroneFotoBooth
