@@ -224,24 +224,24 @@ function DemoScene(props: {
 
 	//url
 
-	// useEffect(()=>{
-	// 	const handleRandomRedirect = () => {
-  //     // 随机生成一个 URL
-	// 		const url = new URL(window.location.href);
-	// 		const currentHash = url.hash;
-	// 		const randomHashes = ['/#construction', '/#wildness', '/#metropolis'];
-  //     const randomHash = randomHashes[Math.floor(Math.random() * randomHashes.length)]
-  //    url.hash = randomHash;
+	useEffect(()=>{
+		const handleRandomRedirect = () => {
+      // 随机生成一个 URL
+			const url = new URL(window.location.href);
+			const currentHash = url.hash;
+			const randomHashes = ['/#construction', '/#wildness', '/#metropolis'];
+      const randomHash = randomHashes[Math.floor(Math.random() * randomHashes.length)]
+     url.hash = randomHash;
 
-  //     // 跳转到随机 URL
-  //     window.location.href = randomHash;
-	// 	};
-	// 		document.addEventListener('click', handleRandomRedirect);
+      // 跳转到随机 URL
+      window.location.href = randomHash;
+		};
+			document.addEventListener('click', handleRandomRedirect);
 
-	// 		return () => {
-  //     document.removeEventListener('click', handleRandomRedirect);
-  //   };
-	// })
+			return () => {
+      document.removeEventListener('click', handleRandomRedirect);
+    };
+	})
 
 
 
