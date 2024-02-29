@@ -236,10 +236,10 @@ function DemoScene(props: {
       // 跳转到随机 URL
       window.location.href = randomHash;
 		};
-			document.addEventListener('click', handleRandomRedirect);
+			document.addEventListener('dblclick', handleRandomRedirect);
 
 			return () => {
-      document.removeEventListener('click', handleRandomRedirect);
+      document.removeEventListener('dblclick', handleRandomRedirect);
     };
 	})
 
